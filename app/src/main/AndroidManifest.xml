@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
         <activity
+            android:name=".Admin_doctor_details"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_aval_doctor"
+            android:exported="false" />
+        <activity
+            android:name=".Admin_adddoc"
+            android:exported="false" />
+        <activity
+            android:name=".Admin"
+            android:exported="false" />
+        <activity
+            android:name=".uprofile"
+            android:exported="false" />
+        <activity
             android:name=".User"
             android:exported="false" />
         <activity

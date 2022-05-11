@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -34,6 +36,16 @@ public class User extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        switch (item.getItemId()) {
+        case R.id.nav_home:
+        startActivity(new Intent(this, uprofile.class));
+        break;
+            case R.id.pred:
+        Intent intent=new Intent(User.this,uprofile.class);
+        startActivity(intent);
+        break;
+    }
+        drawerLayout1.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +15,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private TextView register, forgotPassword;
@@ -28,7 +39,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private String encoded_email;
     private ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
-    String emai,pas;
+    FirebaseFirestore firestore;
+    DocumentReference df;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +49,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         FirebaseApp.initializeApp(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
-        signIn =findViewById(R.id.loginButton);
+        signIn = findViewById(R.id.loginButton);
         signIn.setOnClickListener(this);
 
         editTextEmailMain = (EditText) findViewById(R.id.emailMain);
@@ -50,6 +64,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         register.setOnClickListener(this);
 
     }
+
     public void onClick(View v) {
         switch (v.getId()) {
 
@@ -60,6 +75,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 startActivity(new Intent(Login.this, Signup.class));
                 break;
         }
+    }
+
+    public static String EncodeString(String string) {
+        return string.replace(".", ",");
+    }
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 
     private void userLogin() {
@@ -86,32 +111,50 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             editTextPasswordMain.requestFocus();
             return;
         }
+
         progressBar.setVisibility(View.VISIBLE);
-        firebaseAuth.signInWithEmailAndPassword(emailMain,passwordMain).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(emailMain, passwordMain).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    progressBar.setVisibility(View.INVISIBLE);
+            public void onSuccess(AuthResult authResult) {
 
+                checkUser(authResult.getUser().getUid());
+                Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
+            }
 
-                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, User.class));
-                } else {
-                    Toast.makeText(Login.this, "Login Failed.", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.INVISIBLE);
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void checkUser(String uid) {
+         df = firestore.collection("Users").document(uid);
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("TAG", "onSuccess: " + documentSnapshot.getData());
+                if (documentSnapshot.getString("role").equals("user")) {
+                    startActivity(new Intent(Login.this, MainActivity.class));
+                    finish();
+                }
+                if (documentSnapshot.getString("role").equals("admin")) {
+                  startActivity(new Intent(Login.this, Admin.class));
+                   finish();
+               }
+                if (documentSnapshot.getString("role").equals("Doctor")) {
+                    startActivity(new Intent(Login.this, Admin.class));
+                    finish();
                 }
             }
 
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
-    public static String EncodeString(String string) {
-        return string.replace(".", ",");
-    }
-
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
-
 }

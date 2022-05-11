@@ -5,8 +5,12 @@
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="Home" />
+            android:icon="@drawable/ic_person1"
+            android:title="Profile" />
+        <item
+            android:id="@+id/pred"
+            android:icon="@drawable/ic_baseline_health"
+            android:title="Predico-Disease Prediction" />
 
         <item
             android:id="@+id/speciality_view_all"
@@ -28,10 +32,7 @@
             android:icon="@drawable/ic_chat"
             android:title="Chats" />
 
-        <item
-            android:id="@+id/step"
-            android:icon="@drawable/ic_baseline_health"
-            android:title="PhyziHealth" />
+
 
         <item
             android:id="@+id/settingsApp"

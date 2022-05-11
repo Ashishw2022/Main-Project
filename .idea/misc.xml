@@ -3,15 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/s4/Mainprj/app/src/main/res/drawable-v24/ic_edit.xml" value="0.2275" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/drawable-v24/ic_payment.xml" value="0.2275" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/drawable-v24/ic_person.xml" value="0.2275" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/drawable-v24/ic_person1.xml" value="0.2275" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/drawable/custom_button.xml" value="0.2275" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/drawable/ic_lock.xml" value="0.2275" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/drawable/ic_menu.xml" value="0.2275" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/drawable/ic_phone.xml" value="0.2275" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_adm_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin.xml" value="0.2" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_adddoc.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_aval_doctor.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_doctor_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_available_doctors.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_signup.xml" value="0.2" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_uprofile.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/adminnavg.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/header.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/menu/admin_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/menu/user_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

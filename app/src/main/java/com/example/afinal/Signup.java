@@ -13,17 +13,22 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Signup extends AppCompatActivity implements View.OnClickListener {
     private TextView login;
     private EditText edname,edph,editTextEmailMain, editTextPasswordMain,edcpwd;
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firestore;
 
     private Button signUp;
     private int flag = 0;
@@ -39,7 +44,6 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         signUp =findViewById(R.id.regbtn);
         signUp.setOnClickListener(this);
 
-
         edname=(EditText) findViewById(R.id.lname);
         editTextEmailMain = (EditText) findViewById(R.id.emailMain);
         edph=(EditText) findViewById(R.id.inputPhone);
@@ -47,6 +51,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
         edcpwd=(EditText) findViewById(R.id.cpasswordMain);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore=FirebaseFirestore.getInstance();
         progressBar = (ProgressBar) findViewById(R.id.progressbarlogin);
 
 
@@ -64,6 +69,15 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                 startActivity(new Intent(Signup.this, Login.class));
                 break;
         }
+    }
+    public static String EncodeString(String string) {
+        return string.replace(".", ",");
+    }
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 
     private void userRegister() {
@@ -110,40 +124,29 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
-
-        firebaseAuth.createUserWithEmailAndPassword(emailMain,passwordMain).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(emailMain,passwordMain).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    sendUserData();
+            public void onSuccess(AuthResult authResult) {
                     progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(Signup.this, "Registration Successful.", Toast.LENGTH_SHORT).show();
+                    FirebaseUser user= firebaseAuth.getCurrentUser();
+                     Map<String,Object> userInfo=new HashMap<>();
+                      userInfo.put("Name",edname.getText().toString());
+                      userInfo.put("uemail", editTextEmailMain.getText().toString());
+                      userInfo.put("phone", edph.getText().toString());
+
+                Toast.makeText(Signup.this, "Registration Successful.", Toast.LENGTH_SHORT).show();
+                DocumentReference df=firestore.collection("Users").document(user.getUid());
+                userInfo.put("role","user");
+                df.set(userInfo);
                     startActivity(new Intent(Signup.this, Login.class));
+                    finish();
                 }
-                else{
-                    progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(Signup.this, "Email ID is already Registered",Toast.LENGTH_SHORT).show();
-                }
+          }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressBar.setVisibility(View.INVISIBLE);
+                Toast.makeText(Signup.this, "Registration Failed",Toast.LENGTH_SHORT).show();
             }
-          });
-
+        });
     }
-    public static String EncodeString(String string) {
-        return string.replace(".", ",");
     }
-
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
-    }
-    private void sendUserData(){
-        name =edname.getText().toString();
-        eml = editTextEmailMain.getText().toString();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myref = firebaseDatabase.getReference("UserDetails");
-        UserProfile userProfile = new UserProfile(name,eml);
-        myref.push().setValue(userProfile);
-        //  myref.setValue(userProfile);
-    }
-}
