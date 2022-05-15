@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
         <activity
+            android:name=".Admin_doc_adap"
+            android:exported="false" />
+        <activity
             android:name=".Admin_doctor_details"
             android:exported="false" />
         <activity

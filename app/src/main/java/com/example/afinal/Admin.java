@@ -44,7 +44,7 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Admin.this,Admin_aval_doctor.class));
+                startActivity(new Intent(Admin.this,Admin_doc_adap.class));
             }
         });
 

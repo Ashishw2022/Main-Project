@@ -99,15 +99,14 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/ic_person"
                             android:padding="10dp"
-                            android:src="@drawable/ic_person" />
+                            android:src="@drawable/ic_person1" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Call"
+                            android:text="Users"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -122,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Call person"
+                            android:text="Registerd Users"
                             android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>
@@ -156,15 +155,14 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/ic_person"
                             android:padding="10dp"
-                            android:src="@drawable/ic_person" />
+                            android:src="@drawable/ic_appoint" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Message"
+                            android:text="Appointments"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -179,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Message"
+                            android:text="Scheduled Appointments"
                             android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>
@@ -206,15 +204,14 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/ic_person"
                             android:padding="10dp"
-                            android:src="@drawable/ic_person" />
+                            android:src="@drawable/ic_add" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Search"
+                            android:text="Add Doctor"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -229,7 +226,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Search"
+                            android:text="Add a new Doctor"
                             android:textColor="@android:color/darker_gray" />
 
                     </LinearLayout>

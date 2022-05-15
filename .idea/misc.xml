@@ -15,6 +15,7 @@
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin.xml" value="0.2" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_adddoc.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_aval_doctor.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_doc_adap.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_doctor_details.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_home.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_available_doctors.xml" value="0.25416666666666665" />
@@ -23,6 +24,7 @@
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_uprofile.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/admin_list_view.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/adminnavg.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/header.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
