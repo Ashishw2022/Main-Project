@@ -2,6 +2,7 @@ package com.example.afinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +34,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Login extends AppCompatActivity implements View.OnClickListener {
     private TextView register, forgotPassword;
     private EditText editTextEmailMain, editTextPasswordMain;
-
     private Button signIn;
     private int flag = 0;
     private String encoded_email;
@@ -46,6 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         FirebaseApp.initializeApp(this);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -145,7 +146,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                    finish();
                }
                 if (documentSnapshot.getString("role").equals("Doctor")) {
-                    startActivity(new Intent(Login.this, Admin.class));
+                    startActivity(new Intent(Login.this, Doctor_main.class));
                     finish();
                 }
             }

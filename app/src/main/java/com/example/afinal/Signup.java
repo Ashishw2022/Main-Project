@@ -133,10 +133,11 @@ public class Signup extends AppCompatActivity implements View.OnClickListener {
                       userInfo.put("Name",edname.getText().toString());
                       userInfo.put("uemail", editTextEmailMain.getText().toString());
                       userInfo.put("phone", edph.getText().toString());
+                      userInfo.put("role","user");
 
                 Toast.makeText(Signup.this, "Registration Successful.", Toast.LENGTH_SHORT).show();
                 DocumentReference df=firestore.collection("Users").document(user.getUid());
-                userInfo.put("role","user");
+
                 df.set(userInfo);
                     startActivity(new Intent(Signup.this, Login.class));
                     finish();

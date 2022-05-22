@@ -46,47 +46,56 @@ public class Admin_doc_adap extends AppCompatActivity {
 
     private FirestoreRecyclerAdapter adapter;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_doc_adap);
-        rv=findViewById(R.id.recycler_doc);
         firestore=FirebaseFirestore.getInstance();
+
 
 
 // Create a query against the collection.
         //view
 
-        Query query = firestore.collection("Users");
+        Query query = firestore.collection("Users").whereEqualTo("role","Doctor");
             //recyclerOptions
-        FirestoreRecyclerOptions<Doctors_Profile> options=new FirestoreRecyclerOptions.Builder<Doctors_Profile>()
-                .setQuery(query,Doctors_Profile.class)
+        FirestoreRecyclerOptions<doctor_model> options=new FirestoreRecyclerOptions.Builder<doctor_model>()
+                .setQuery(query,doctor_model.class)
                 .build();
 
-         adapter= new FirestoreRecyclerAdapter<Doctors_Profile, docview>(options) {
+         adapter= new FirestoreRecyclerAdapter<doctor_model,docview>(options) {
             @NonNull
             @Override
             public docview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-               View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_list_view,parent,false);
+               View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.admdoc_tv,parent,false);
                 return new docview(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull docview holder, int position, @NonNull Doctors_Profile model) {
+            protected void onBindViewHolder(@NonNull docview holder, int position, @NonNull doctor_model model) {
                 holder.n_name.setText(model.getName());
+                holder.n_email.setText(model.getUemail());
+
             }
         };
-         rv.setHasFixedSize(true);
-         rv.setLayoutManager(new LinearLayoutManager(this));
-         rv.setAdapter(adapter);
+        rv=(RecyclerView)findViewById(R.id.recycler_doc);
+
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(adapter);
+
         }
 
 
     private class docview extends RecyclerView.ViewHolder{
-        private TextView n_name;
+        private TextView n_name,n_email;
         public docview(@NonNull View itemView) {
             super(itemView);
-            n_name=itemView.findViewById(R.id.admtv1);
+            n_name=itemView.findViewById(R.id.admdoc_name);
+            n_email=itemView.findViewById(R.id.admdoc_email);
         }
     }
 

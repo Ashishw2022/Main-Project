@@ -19,16 +19,21 @@
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_doctor_details.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_admin_home.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_available_doctors.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_doctor_main.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_signup.xml" value="0.2" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_uprofile.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/activity_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/admdoc_tv.xml" value="0.264" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/admin_list_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/admindoc_tv.xml" value="0.11302083333333333" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/adminnavg.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/header.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/layout/signupbg.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/menu/admin_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/s4/Mainprj/app/src/main/res/menu/doctor_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/s4/Mainprj/app/src/main/res/menu/user_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

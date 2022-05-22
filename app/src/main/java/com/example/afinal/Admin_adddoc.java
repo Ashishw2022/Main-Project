@@ -103,13 +103,13 @@ public class Admin_adddoc extends AppCompatActivity {
             public void onSuccess(AuthResult authResult) {
                 FirebaseUser user= mAuth.getCurrentUser();
                 Map<String,Object> userInfo=new HashMap<>();
-                userInfo.put("dName",editTextFullName.getText().toString());
-                userInfo.put("demail", editTextEmail.getText().toString());
+                userInfo.put("Name",editTextFullName.getText().toString());
+                userInfo.put("email", editTextEmail.getText().toString());
                 Toast.makeText(Admin_adddoc.this, "Doctor Registration Successful.", Toast.LENGTH_SHORT).show();
                 DocumentReference df=firestore.collection("Users").document(user.getUid());
                 userInfo.put("role","Doctor");
                 df.set(userInfo);
-                startActivity(new Intent(Admin_adddoc.this, Login.class));
+                startActivity(new Intent(Admin_adddoc.this, Admin_adddoc.class));
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
